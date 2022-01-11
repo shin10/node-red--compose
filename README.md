@@ -9,4 +9,6 @@ git clone git@github.com:shin10/node-red--compose ~/.node-red &&
   make setup &&
   make start
 )
+
+~/.node-red/make pull-settings
 ```

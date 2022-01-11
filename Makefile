@@ -17,5 +17,5 @@ start: ## start docker-compose
 stop: ## stop docker-compose
 	docker-compose down
 
-.PHONY: help setup start stop
+.PHONY: help setup hash-pw start stop
 .DEFAULT_GOAL := help
