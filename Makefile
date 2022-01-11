@@ -17,5 +17,19 @@ start: ## start docker-compose
 stop: ## stop docker-compose
 	docker-compose down
 
-.PHONY: help setup hash-pw start stop
+pull-settings: ## get settings from github
+	@if [ -d ./.docker/node-red/.git ]; then \
+		(cd ./.docker/node-red; git pull); \
+	else \
+		git clone git@github.com:$(shell git config github.user)/node-red--config ./.docker/node-red; \
+	fi
+
+push-settings: ## get settings from github
+	@if [ -d ./.docker/node-red/.git ]; then \
+		(cd ./.docker/node-red; git commit -a; git push); \
+	else \
+		echo You have to pull-settings first; \
+	fi
+
+.PHONY: help setup hash-pw start stop pull-settings push-settings
 .DEFAULT_GOAL := help
