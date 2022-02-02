@@ -7,5 +7,6 @@ services:
       - .env
     ports:
       - "1880:1880"
+    restart: always
     volumes:
       - ./.docker/node-red:/data
