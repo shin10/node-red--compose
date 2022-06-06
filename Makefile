@@ -5,8 +5,8 @@ help: ## shows this helpfile
 	@grep --no-filename -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 setup: ## set credential secret
-	sudo chown $$UID:$$GID .docker/node-red
-	pull-settings
+#	sudo chown $$UID:$$GID .docker/node-red
+#	pull-settings
 	@echo Set Node RED admin Password: && read -s password && echo 'NODE_RED_CREDENTIAL_SECRET='$$password > ./.env && \
 		echo "TZ=$(timedatectl show | awk -F '=' '/^Timezone/ {print $2}')" >> .env
 	$(MAKE) start

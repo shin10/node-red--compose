@@ -10,3 +10,9 @@ services:
     restart: always
     volumes:
       - ./.docker/node-red:/data
+    networks:
+      - home_assistant
+
+networks:
+  home_assistant:
+    external: true
